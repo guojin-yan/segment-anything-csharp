@@ -1,8 +1,9 @@
-# segment-anything-csharp
-
-
-
-> ​     OpenVINO™ C# API 是一个 OpenVINO™ 的 .Net wrapper，应用最新的 OpenVINO™ 库开发，通过 OpenVINO™ C API 实现 .Net 对 OpenVINO™ Runtime 调用.Segment Anything Model（SAM）是一个基于Transformer的深度学习模型，主要应用于图像分割领域。在本文中，我们将演示如何在C#中使用OpenVINO™部署 Segment Anything Model 实现任意目标分割。
+<div><center><b>
+    <font color="34,63,93" size="7"> 
+        使用 OpenVINO™ C# API 部署 Segment Anything Model 实现任意目标分割
+    </font>
+</b></center></div> 
+> &emsp;     OpenVINO™ C# API 是一个 OpenVINO™ 的 .Net wrapper，应用最新的 OpenVINO™ 库开发，通过 OpenVINO™ C API 实现 .Net 对 OpenVINO™ Runtime 调用.Segment Anything Model（SAM）是一个基于Transformer的深度学习模型，主要应用于图像分割领域。在本文中，我们将演示如何在C#中使用OpenVINO™部署 Segment Anything Model 实现任意目标分割。
 >
 > &emsp;     OpenVINO™ C# API项目链接：
 >
@@ -277,4 +278,3 @@ static void Main(string[] args)
 ​    在该项目中，我们演示了如何在C#中使用OpenVINO™部署 Segment Anything Model 实现任意目标分割。最后如果各位开发者在使用中有任何问题，以及对该接口开发有任何建议，欢迎大家与我联系。
 
 ![个人账号 - 2](https://s2.loli.net/2024/06/04/yuWKtX7MzdfRvVO.png)
-
