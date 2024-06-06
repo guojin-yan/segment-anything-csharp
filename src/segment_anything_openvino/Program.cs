@@ -14,8 +14,8 @@ namespace segment_anything_openvino
         {
             string embedding_model = "./../../../../../model/vit_b_encoder/vit_b_encoder.onnx";
             string decoding_model = "./../../../../../model/vit_b_decoder.onnx";
-            string image_path = "./../../../../../images/truck.jpg";
-            string image_embedding_path = "./../../../../../images/truck.bin";
+            string image_path = "./../../../../../images/dog.jpg";
+            string image_embedding_path = "./../../../../../images/dog.bin";
 
             Mat img = Cv2.ImRead(image_path);
             float factor = 0;
@@ -28,18 +28,18 @@ namespace segment_anything_openvino
 
 
             float[] image_embedding_data = LoadFromFile(image_embedding_path);
-            float[] onnx_coord = new float[6] { 500f / factor, 375f / factor, 1125f / factor, 625f / factor, 0f, 0f };
-            float[] onnx_label = new float[3] { 1f, 1f, -1f };
+            float[] onnx_coord = new float[6] { 600f / factor, 200f / factor, 480 / factor, 130 / factor, (480 + 190)/factor, (130 + 140)/factor };
+            float[] onnx_label = new float[3] { 1f, 2f, 3f };
             float[] onnx_mask_input = new float[256 * 256];
             float[] onnx_has_mask_input = new float[1] { 0 };
             float[] img_size = new float[2] { img.Height, img.Width };
             byte[] result = ImageDecodings(decoding_model, image_embedding_data, onnx_coord, onnx_label, onnx_mask_input, onnx_has_mask_input, img_size);
 
 
-            Cv2.Rectangle(img, new Rect(500, 375, 20, 20), new Scalar(0, 0, 255), -1);
-            Cv2.Rectangle(img, new Rect(1125, 625, 20, 20), new Scalar(0, 255, 255), -1);
-            Mat mask = new Mat(1200, 1800, MatType.CV_8UC1, result);
-            Mat rgb_mask = Mat.Zeros(new Size(1800, 1200), MatType.CV_8UC3);
+            Cv2.Rectangle(img, new Rect(600, 200, 20, 20), new Scalar(0, 0, 255), -1);
+            Cv2.Rectangle(img, new Rect(480, 130, 190, 140), new Scalar(0, 255, 255), 2);
+            Mat mask = new Mat(img.Rows, img.Cols, MatType.CV_8UC1, result);
+            Mat rgb_mask = Mat.Zeros(new Size(img.Cols, img.Rows), MatType.CV_8UC3);
             Cv2.Add(rgb_mask, new Scalar(255.0, 144.0, 37.0, 0.6), rgb_mask, mask);
             Mat new_mat = new Mat();
             Cv2.AddWeighted(img, 0.5, rgb_mask, 0.5, 0.0, new_mat);
